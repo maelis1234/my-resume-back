@@ -11,3 +11,11 @@ model User {
   id   Int    @id
   name String @db.VarChar(45)
 }
+
+model Contact {
+  id        Int    @id
+  firstname String @db.VarChar(45)
+  lastname  String @db.VarChar(45)
+  email     String @db.VarChar(45)
+  message   String @db.VarChar(500)
+}

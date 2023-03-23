@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaClient, User } from '@prisma/client'
+import { Contact, PrismaClient, User } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -18,6 +18,18 @@ export class AppService {
             data: {
                 id: user.id,
                 name: user.name,
+            },
+        })
+    }
+
+    createContact(contact: Contact) {
+        return prisma.contact.create({
+            data: {
+                id: contact.id,
+                firstname: contact.firstname,
+                lastname: contact.lastname,
+                email: contact.email,
+                message: contact.message,
             },
         })
     }
