@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { Contact, PrismaClient, User } from '@prisma/client'
+import { Contact, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -9,34 +9,11 @@ export class AppService {
         return 'Hello World!'
     }
 
-    getUsers() {
-        return prisma.user.findMany()
-    }
-
-    createUser(user: User) {
-        return prisma.user.create({
-            data: {
-                id: user.id,
-                name: user.name,
-            },
-        })
-    }
-
     createContact(contact: Contact) {
+        const randomId = Math.floor(Math.random() * 1000)
+        const newContact = { ...contact, id: randomId }
         return prisma.contact.create({
-            data: {
-                id: contact.id,
-                firstname: contact.firstname,
-                lastname: contact.lastname,
-                email: contact.email,
-                message: contact.message,
-            },
-        })
-    }
-
-    findUserById(id: number): Promise<User> {
-        return prisma.user.findUnique({
-            where: { id },
+            data: newContact,
         })
     }
 }

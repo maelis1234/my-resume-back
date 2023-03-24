@@ -7,15 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id   Int    @id
-  name String @db.VarChar(45)
-}
-
 model Contact {
   id        Int    @id
-  firstname String @db.VarChar(45)
-  lastname  String @db.VarChar(45)
-  email     String @db.VarChar(45)
+  firstname String @db.VarChar(40)
+  lastname  String @db.VarChar(40)
+  email     String @db.VarChar()
   message   String @db.VarChar(500)
 }
