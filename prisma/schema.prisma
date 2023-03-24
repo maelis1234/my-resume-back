@@ -8,9 +8,10 @@ datasource db {
 }
 
 model Contact {
-  id        Int    @id
-  firstname String @db.VarChar(40)
-  lastname  String @db.VarChar(40)
-  email     String @db.VarChar()
-  message   String @db.VarChar(500)
+  id        Int      @id
+  firstname String   @db.VarChar(40)
+  lastname  String   @db.VarChar(40)
+  email     String   @db.VarChar()
+  message   String   @db.VarChar(500)
+  createdAt DateTime @default(now())
 }
